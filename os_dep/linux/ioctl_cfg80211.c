@@ -4136,9 +4136,9 @@ void rtw_cfg80211_indicate_sta_assoc(_adapter *padapter, u8 *pmgmt_frame, uint f
 
 #if defined(RTW_USE_CFG80211_STA_EVENT) || defined(COMPAT_KERNEL_RELEASE)
 	{
+		u8 ie_offset;
 		struct station_info sinfo;
 		_rtw_memset(&sinfo, 0, sizeof(struct station_info));
-		u8 ie_offset;
 		if (get_frame_sub_type(pmgmt_frame) == WIFI_ASSOCREQ)
 			ie_offset = _ASOCREQ_IE_OFFSET_;
 		else /* WIFI_REASSOCREQ */
@@ -9385,7 +9385,7 @@ static struct cfg80211_ops rtw_cfg80211_ops = {
 #endif
 
 	.add_station = cfg80211_rtw_add_station,
-	.del_station = cfg80211_rtw_del_station,
+	//.del_station = cfg80211_rtw_del_station,
 	.change_station = cfg80211_rtw_change_station,
 	.dump_station = cfg80211_rtw_dump_station,
 	.change_bss = cfg80211_rtw_change_bss,
